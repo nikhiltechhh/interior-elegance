@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, LayoutGrid, List, X, Check } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 // Service images
 import kitchenImg from "@/assets/services/modular-kitchen.jpg";
@@ -14,10 +14,50 @@ import poojaRoomImg from "@/assets/services/pooja-room.jpg";
 import homeOfficeImg from "@/assets/services/home-office.jpg";
 import homeMakeoverImg from "@/assets/services/home-makeover.jpg";
 
-// Gallery images
+// Gallery images - Kitchen
 import kitchenGallery1 from "@/assets/services/gallery/kitchen-1.jpg";
+import kitchenGallery2 from "@/assets/services/gallery/kitchen-2.jpg";
+import kitchenGallery3 from "@/assets/services/gallery/kitchen-3.jpg";
+
+// Gallery images - Bedroom
 import bedroomGallery1 from "@/assets/services/gallery/bedroom-1.jpg";
+import bedroomGallery2 from "@/assets/services/gallery/bedroom-2.jpg";
+import bedroomGallery3 from "@/assets/services/gallery/bedroom-3.jpg";
+
+// Gallery images - Wardrobe
 import wardrobeGallery1 from "@/assets/services/gallery/wardrobe-1.jpg";
+import wardrobeGallery2 from "@/assets/services/gallery/wardrobe-2.jpg";
+import wardrobeGallery3 from "@/assets/services/gallery/wardrobe-3.jpg";
+
+// Gallery images - Kids Room
+import kidsGallery1 from "@/assets/services/gallery/kids-1.jpg";
+import kidsGallery2 from "@/assets/services/gallery/kids-2.jpg";
+import kidsGallery3 from "@/assets/services/gallery/kids-3.jpg";
+
+// Gallery images - Living Room
+import livingGallery1 from "@/assets/services/gallery/living-1.jpg";
+import livingGallery2 from "@/assets/services/gallery/living-2.jpg";
+import livingGallery3 from "@/assets/services/gallery/living-3.jpg";
+
+// Gallery images - Entertainment
+import entertainmentGallery1 from "@/assets/services/gallery/entertainment-1.jpg";
+import entertainmentGallery2 from "@/assets/services/gallery/entertainment-2.jpg";
+import entertainmentGallery3 from "@/assets/services/gallery/entertainment-3.jpg";
+
+// Gallery images - Pooja Room
+import poojaGallery1 from "@/assets/services/gallery/pooja-1.jpg";
+import poojaGallery2 from "@/assets/services/gallery/pooja-2.jpg";
+import poojaGallery3 from "@/assets/services/gallery/pooja-3.jpg";
+
+// Gallery images - Home Office
+import officeGallery1 from "@/assets/services/gallery/office-1.jpg";
+import officeGallery2 from "@/assets/services/gallery/office-2.jpg";
+import officeGallery3 from "@/assets/services/gallery/office-3.jpg";
+
+// Gallery images - Home Makeover
+import makeoverGallery1 from "@/assets/services/gallery/makeover-1.jpg";
+import makeoverGallery2 from "@/assets/services/gallery/makeover-2.jpg";
+import makeoverGallery3 from "@/assets/services/gallery/makeover-3.jpg";
 
 import { 
   ChefHat, 
@@ -65,7 +105,7 @@ const services: Service[] = [
       "Integrated appliance solutions",
       "Ergonomic workflow design"
     ],
-    gallery: [kitchenImg, kitchenGallery1, kitchenImg]
+    gallery: [kitchenGallery1, kitchenGallery2, kitchenGallery3]
   },
   {
     id: "personalized-bedroom",
@@ -84,7 +124,7 @@ const services: Service[] = [
       "Space-optimized furniture layouts",
       "Climate-controlled comfort features"
     ],
-    gallery: [bedroomImg, bedroomGallery1, bedroomImg]
+    gallery: [bedroomGallery1, bedroomGallery2, bedroomGallery3]
   },
   {
     id: "functional-wardrobe",
@@ -103,7 +143,7 @@ const services: Service[] = [
       "Accessory organizers and drawers",
       "Humidity-controlled sections"
     ],
-    gallery: [wardrobeImg, wardrobeGallery1, wardrobeImg]
+    gallery: [wardrobeGallery1, wardrobeGallery2, wardrobeGallery3]
   },
   {
     id: "kids-room",
@@ -122,7 +162,7 @@ const services: Service[] = [
       "Study areas with proper lighting",
       "Fun themes and color schemes"
     ],
-    gallery: [kidsRoomImg, kidsRoomImg, kidsRoomImg]
+    gallery: [kidsGallery1, kidsGallery2, kidsGallery3]
   },
   {
     id: "living-room",
@@ -141,7 +181,7 @@ const services: Service[] = [
       "Focal point design elements",
       "Smart home integration ready"
     ],
-    gallery: [livingRoomImg, livingRoomImg, livingRoomImg]
+    gallery: [livingGallery1, livingGallery2, livingGallery3]
   },
   {
     id: "entertainment-unit",
@@ -160,7 +200,7 @@ const services: Service[] = [
       "Gaming console storage",
       "Display shelving for collectibles"
     ],
-    gallery: [entertainmentImg, entertainmentImg, entertainmentImg]
+    gallery: [entertainmentGallery1, entertainmentGallery2, entertainmentGallery3]
   },
   {
     id: "pooja-room",
@@ -179,7 +219,7 @@ const services: Service[] = [
       "Ambient and ritual lighting",
       "Natural wood and brass elements"
     ],
-    gallery: [poojaRoomImg, poojaRoomImg, poojaRoomImg]
+    gallery: [poojaGallery1, poojaGallery2, poojaGallery3]
   },
   {
     id: "home-office",
@@ -198,7 +238,7 @@ const services: Service[] = [
       "Video call backdrop design",
       "Integrated storage and filing"
     ],
-    gallery: [homeOfficeImg, homeOfficeImg, homeOfficeImg]
+    gallery: [officeGallery1, officeGallery2, officeGallery3]
   },
   {
     id: "home-makeover",
@@ -217,7 +257,7 @@ const services: Service[] = [
       "Furniture selection and placement",
       "Final styling and accessorizing"
     ],
-    gallery: [homeMakeoverImg, homeMakeoverImg, homeMakeoverImg]
+    gallery: [makeoverGallery1, makeoverGallery2, makeoverGallery3]
   }
 ];
 
@@ -399,28 +439,31 @@ const Services = () => {
                       <DialogTitle className="text-2xl lg:text-3xl font-serif font-bold text-foreground mb-1">
                         {selectedService.title}
                       </DialogTitle>
+                      <DialogDescription className="text-sm text-muted-foreground">
+                        {getCategoryLabel(selectedService.category)} • Premium Interior Design Service
+                      </DialogDescription>
                     </DialogHeader>
-                    <span className="text-sm text-muted-foreground">
-                      {getCategoryLabel(selectedService.category)}
-                    </span>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  {selectedService.fullDescription}
-                </p>
+                <div className="mb-6 p-4 bg-muted/50 rounded-xl">
+                  <h4 className="text-lg font-serif font-semibold text-foreground mb-2">About This Service</h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {selectedService.fullDescription}
+                  </p>
+                </div>
 
-                {/* Key Points */}
+                {/* What's Included */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-serif font-semibold text-foreground mb-4">Key Features</h4>
+                  <h4 className="text-lg font-serif font-semibold text-foreground mb-4">What's Included</h4>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {selectedService.keyPoints.map((point, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <Check className="w-3 h-3 text-primary" />
+                      <div key={idx} className="flex items-start gap-3 p-3 bg-card rounded-lg border border-border">
+                        <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3.5 h-3.5 text-primary-foreground" />
                         </div>
-                        <span className="text-sm text-foreground">{point}</span>
+                        <span className="text-sm text-foreground font-medium">{point}</span>
                       </div>
                     ))}
                   </div>
@@ -428,7 +471,7 @@ const Services = () => {
 
                 {/* Gallery */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-serif font-semibold text-foreground mb-4">Gallery</h4>
+                  <h4 className="text-lg font-serif font-semibold text-foreground mb-4">Related Pictures</h4>
                   <div className="grid grid-cols-3 gap-3">
                     {selectedService.gallery.map((img, idx) => (
                       <button
@@ -440,7 +483,7 @@ const Services = () => {
                             : "border-transparent hover:border-border"
                         }`}
                       >
-                        <img src={img} alt={`${selectedService.title} ${idx + 1}`} className="w-full h-full object-cover" />
+                        <img src={img} alt={`${selectedService.title} ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                       </button>
                     ))}
                   </div>
