@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/ira.png";
 
 const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "Services", href: "#services" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "How It Works", href: "#how-it-works" },
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/#services" },
+  { name: "Portfolio", href: "/#gallery" },
+  { name: "Projects", href: "/Projects" },
+  { name: "Testimonials", href: "/#reviews" },
+  { name: "How It Works", href: "/#work" },
 ];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Add scroll shadow
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -21,12 +24,9 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -39,14 +39,27 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center justify-between h-16 sm:h-20">
-          <a href="#" className="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
-            <span className="text-xl sm:text-2xl md:text-3xl font-serif font-bold tracking-tight">
-              <span className="text-secondary">IRA</span>
-              <span className="text-primary"> Interiors</span>
+        <nav className="flex items-center justify-between h-16 sm:h-24">
+
+          {/* ---------- LOGO ---------- */}
+          {/* ---------- LOGO ---------- */}
+         {/* ---------- LOGO ---------- */}
+          <a
+            href="/"
+            className="flex flex-col items-center justify-center gap-0 group flex-shrink-0 py-1"
+          >
+            <img
+              src={logo}
+              alt="IRA Interiors Logo"
+              className="h-14 w-14 sm:h-20 sm:w-20 md:h-18 md:w-18 object-contain transition-transform duration-300 group-hover:scale-105 -mb-1"
+            />
+            <span className="text-xs sm:text-sm md:text-base tracking-tight text-center whitespace-nowrap -mt-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              <span className="text-secondary" style={{ fontWeight: 700 }}>IRA</span>
+              <span className="text-primary" style={{ fontWeight: 300 }}> INTERIORS</span>
             </span>
           </a>
 
+          {/* ---------- Desktop Navigation ---------- */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <a
@@ -59,12 +72,14 @@ const Header = () => {
             ))}
           </div>
 
+          {/* ---------- Desktop Contact Button ---------- */}
           <div className="hidden lg:block">
-            <Button variant="hero" size="default">
-              Contact
+            <Button asChild variant="hero" size="default">
+              <a href="tel:+919177515333">Contact</a>
             </Button>
           </div>
 
+          {/* ---------- Mobile Menu Button ---------- */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden relative w-10 h-10 flex items-center justify-center focus:outline-none z-50"
@@ -72,17 +87,17 @@ const Header = () => {
           >
             <div className="flex flex-col items-center justify-center gap-1.5">
               <span
-                className={`block h-0.5 bg-secondary transition-all duration-300 ease-in-out origin-center ${
+                className={`block h-0.5 bg-secondary transition-all duration-300 origin-center ${
                   isMenuOpen ? "w-6 rotate-45 translate-y-2" : "w-6"
                 }`}
               />
               <span
-                className={`block h-0.5 bg-primary transition-all duration-300 ease-in-out ${
+                className={`block h-0.5 bg-primary transition-all duration-300 ${
                   isMenuOpen ? "w-0 opacity-0" : "w-3"
                 }`}
               />
               <span
-                className={`block h-0.5 bg-secondary transition-all duration-300 ease-in-out origin-center ${
+                className={`block h-0.5 bg-secondary transition-all duration-300 origin-center ${
                   isMenuOpen ? "w-6 -rotate-45 -translate-y-2" : "w-6"
                 }`}
               />
@@ -90,6 +105,7 @@ const Header = () => {
           </button>
         </nav>
 
+        {/* ---------- Mobile Menu Drawer ---------- */}
         <div
           className={`lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-background transition-all duration-500 ease-in-out ${
             isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
@@ -103,7 +119,9 @@ const Header = () => {
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-foreground/80 hover:text-foreground font-medium py-3 text-lg transition-all duration-300 border-b border-border/50 ${
-                    isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"
+                    isMenuOpen
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 -translate-x-4"
                   }`}
                   style={{
                     transitionDelay: isMenuOpen ? `${index * 75}ms` : "0ms",
@@ -112,17 +130,24 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <Button 
-                variant="hero" 
-                size="lg" 
+
+              {/* Mobile Contact Button */}
+              <Button
+                asChild
+                variant="hero"
+                size="lg"
                 className={`mt-6 w-full transition-all duration-300 ${
                   isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`}
                 style={{
-                  transitionDelay: isMenuOpen ? `${navLinks.length * 75}ms` : "0ms",
+                  transitionDelay: isMenuOpen
+                    ? `${navLinks.length * 75}ms`
+                    : "0ms",
                 }}
               >
-                Contact
+                <a href="tel:+919177515333" onClick={() => setIsMenuOpen(false)}>
+                  Contact
+                </a>
               </Button>
             </div>
           </div>

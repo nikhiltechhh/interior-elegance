@@ -348,9 +348,9 @@ const Services = () => {
               onClick={() => setSelectedService(service)}
             >
               {/* Image Container */}
-              <div className={`relative overflow-hidden ${viewMode === "list" ? "flex gap-6" : ""}`}>
-                <div className={`relative ${viewMode === "list" ? "w-1/3 flex-shrink-0" : ""}`}>
-                  <div className={`${viewMode === "list" ? "aspect-[4/3]" : "aspect-[16/10]"} overflow-hidden`}>
+              <div className={`relative overflow-hidden ${viewMode === "list" ? "flex flex-col sm:flex-row gap-4 sm:gap-6" : ""}`}>
+                <div className={`relative ${viewMode === "list" ? "w-full sm:w-2/5 md:w-1/3 flex-shrink-0" : ""}`}>
+                  <div className={`${viewMode === "list" ? "aspect-[16/10] sm:aspect-[4/3]" : "aspect-[16/10]"} overflow-hidden rounded-t-xl ${viewMode === "list" ? "sm:rounded-l-xl sm:rounded-tr-none" : ""}`}>
                     <img
                       src={service.image}
                       alt={service.title}
@@ -359,7 +359,7 @@ const Services = () => {
                   </div>
                   
                   {/* Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
+                  <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 flex justify-between items-start flex-wrap gap-2">
                     {service.featured && (
                       <span className="featured-badge">Featured</span>
                     )}
@@ -370,29 +370,31 @@ const Services = () => {
                 </div>
 
                 {/* Content */}
-                <div className={`p-5 ${viewMode === "list" ? "flex-1 flex flex-col justify-center" : ""}`}>
-                  {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
-                    <service.icon className="w-6 h-6 text-secondary" />
-                  </div>
+                <div className={`p-5 ${viewMode === "list" ? "flex-1 flex flex-col justify-between sm:justify-center" : ""}`}>
+                  <div>
+                    {/* Icon */}
+                    <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
+                      <service.icon className="w-6 h-6 text-secondary" />
+                    </div>
 
-                  <h3 className="text-xl font-serif font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
-                    {service.shortDescription}
-                  </p>
+                    <h3 className={`font-serif font-bold text-foreground mb-2 group-hover:text-primary transition-colors ${viewMode === "list" ? "text-xl sm:text-2xl" : "text-xl"}`}>
+                      {service.title}
+                    </h3>
+                    
+                    <p className={`text-muted-foreground leading-relaxed mb-4 ${viewMode === "list" ? "text-sm sm:text-base line-clamp-3 sm:line-clamp-2" : "text-sm line-clamp-2"}`}>
+                      {service.shortDescription}
+                    </p>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {service.tags.map((tag) => (
-                      <span key={tag} className="service-tag">{tag}</span>
-                    ))}
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {service.tags.map((tag) => (
+                        <span key={tag} className="service-tag">{tag}</span>
+                      ))}
+                    </div>
                   </div>
 
                   {/* CTA */}
-                  <button className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors group/btn">
+                  <button className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors group/btn mt-auto">
                     View Details
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                   </button>
@@ -405,11 +407,11 @@ const Services = () => {
 
       {/* Service Detail Modal */}
       <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0" hideCloseButton>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0 gap-0" hideCloseButton>
           {selectedService && (
-            <>
+            <div className="flex flex-col">
               {/* Modal Header Image */}
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[350px] flex-shrink-0 overflow-hidden">
                 <img
                   src={selectedService.gallery[selectedGalleryImage]}
                   alt={selectedService.title}
@@ -428,7 +430,7 @@ const Services = () => {
                 )}
               </div>
 
-              <div className="p-6 lg:p-8">
+              <div className="p-6 lg:p-8 flex-1">
                 {/* Icon and Title */}
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -490,24 +492,13 @@ const Services = () => {
                 </div>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2">
                   {selectedService.tags.map((tag) => (
                     <span key={tag} className="service-tag">{tag}</span>
                   ))}
                 </div>
-
-                {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button variant="hero" size="lg" className="flex-1">
-                    Book Consultation
-                    <ArrowRight className="w-5 h-5" />
-                  </Button>
-                  <Button variant="hero-outline" size="lg" className="flex-1">
-                    View Portfolio
-                  </Button>
-                </div>
               </div>
-            </>
+            </div>
           )}
         </DialogContent>
       </Dialog>

@@ -13,7 +13,7 @@ const Hero = () => {
               style={{ animationDelay: "100ms" }}
             >
               Transform Your Space Into a{" "}
-              <span className="text-primary">Dream Home</span>
+              <span className="text-primary">Dream Reality</span>
             </h1>
             
             <p 
@@ -28,13 +28,17 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-2 sm:mt-4 opacity-0 animate-fade-in"
               style={{ animationDelay: "300ms" }}
             >
-              <Button variant="hero" size="lg" className="group w-full sm:w-auto">
-                Explore Our Work
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-              <Button variant="hero-outline" size="lg" className="w-full sm:w-auto">
-                Book Consultation
-              </Button>
+              <Button asChild variant="hero" size="lg" className="group w-full sm:w-auto">
+  <a href="#gallery">
+    Explore Our Work
+    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+  </a>
+</Button>
+
+            <Button asChild variant="hero-outline" size="lg" className="w-full sm:w-auto">
+  <a href="tel:+919177515333">Contact Us</a>
+</Button>
+
             </div>
 
             <div 
@@ -47,14 +51,14 @@ const Hero = () => {
               </div>
               <div className="w-px h-10 sm:h-12 bg-border" />
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-secondary">15+</span>
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-secondary">14+</span>
                 <span className="text-xs sm:text-sm text-muted-foreground">Years Experience</span>
               </div>
-              <div className="w-px h-10 sm:h-12 bg-border" />
-              <div className="flex flex-col">
+              {/* <div className="w-px h-10 sm:h-12 bg-border" /> */}
+              {/* <div className="flex flex-col">
                 <span className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-secondary">50+</span>
                 <span className="text-xs sm:text-sm text-muted-foreground">Awards Won</span>
-              </div>
+              </div> */}
             </div>
           </div>
 
