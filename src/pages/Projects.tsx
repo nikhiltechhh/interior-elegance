@@ -10,8 +10,7 @@ const categories = [
   { id: "retail", name: "Retail", icon: ShoppingBag },
   { id: "healthcare", name: "Healthcare", icon: Hospital },
   { id: "institutional", name: "Institutional", icon: GraduationCap },
-    { name: "MR. SRINIVAS – CA OFFICE", location: "Hyderabad" },
-  { name: "MR. VENKATESHWAR RAO – CORPORATE OFFICE", location: "Hyderabad" },
+  
 ];
 
 const projectsData = {
@@ -27,7 +26,9 @@ const projectsData = {
     { name: "RAJSOFT COMMUNICATIONS", location: "Banjara Hills" },
     { name: "RAJSOFT COMMUNICATIONS", location: "Dilshuknagar" },
     { name: "MARK MED SURGE LTD. (Corporate Office)", location: "Sick Village" },
-      { name: "MR. MANIDEEP – CAFE", location: "Bapatla" },
+    { name: "MR. MANIDEEP - CAFE", location: "Bapatla" },
+     { name: "MR. SRINIVAS - CA OFFICE", location: "Hyderabad" },
+  { name: "MR. VENKATESHWAR RAO - CORPORATE OFFICE", location: "Hyderabad" },
   ],
   residential: [
     { name: "MR. RAVISHANKAR FLAT", location: "Gayatri Elegance Apt, Vikrampuri" },
@@ -50,8 +51,8 @@ const projectsData = {
     { name: "MR. BHOOPAL REDDY", location: "Bhoopal Reddy Vilas, Athapur" },
     { name: "ACTOR HIMAJA", location: "JB Infra Villa, Ibrahimpatnam" },
     { name: "MR. SRINIVAS YADAV", location: "My Home Bhooja, Gachibowli" },
-  { name: "MR. KISHORE – DUPLEX HOUSE", location: "Chilakaluripeta" },
-  { name: "MR. PAVAN – 3BHK FLATS", location: "Hyderabad" },
+  { name: "MR. KISHORE - DUPLEX HOUSE", location: "Chilakaluripeta" },
+  { name: "MR. PAVAN - 3BHK FLATS", location: "Hyderabad" },
   ],
   retail: [
     { name: "COTTON KING", location: "Hyderabad" },
@@ -83,7 +84,7 @@ const projectsData = {
     { name: "APOLLO eUPHC - GUNTAKAL", location: "Guntakal, AP" },
     { name: "APOLLO eUPHC - DHARMAVARAM", location: "Dharmavaram, AP" },
     { name: "APOLLO eUPHC - KADIRI", location: "Kadiri, AP" },
-      { name: "LV PRASAD EYE HOSPITALS", location: "Hyderabad" },
+    { name: "LV PRASAD EYE HOSPITALS", location: "Hyderabad" },
   ],
   institutional: [
     { name: "RUMI EDUCATIONAL INSTITUTE", location: "Somajiguda" },
